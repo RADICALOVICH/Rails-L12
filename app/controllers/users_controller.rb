@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
+# Application
 class UsersController < ApplicationController
   before_action :no_authentication, only: %i[new create]
   before_action :authentication, only: %i[edit update]
   before_action :set_user, only: %i[edit update]
-  
+
   def new
     @user = User.new
   end
@@ -17,7 +20,7 @@ class UsersController < ApplicationController
       redirect_to new_user_path, notice: 'Ошибка во вводе данных или такой пользователь уже существует'
     end
   end
-  
+
   def edit; end
 
   def update
@@ -39,5 +42,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :name, :password, :password_confirmation, :old_password)
   end
-
 end

@@ -1,5 +1,7 @@
-class ApplicationController < ActionController::Base
+# frozen_string_literal: true
 
+# Application
+class ApplicationController < ActionController::Base
   private
 
   def current_user

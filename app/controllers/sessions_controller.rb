@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Application
 class SessionsController < ApplicationController
   before_action :no_authentication, only: %i[new create]
   before_action :authentication, only: :destroy

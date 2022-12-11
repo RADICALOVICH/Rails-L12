@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Application
 class SequencesController < ApplicationController
   def main; end
 
