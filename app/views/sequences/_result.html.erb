@@ -1,1 +1,34 @@
-<h1>Lox</h1>
+<% if user_signed_in? %>
+  <% if @result.valid? %>
+  <% if @ok %>
+    <br></br>
+    <table class ="table table-bordered">
+      <tr>
+        <th style="text-align: center">Number</th>
+        <th style="text-align: center">Squares</th>
+      </tr>
+      <% @result_array.each_with_index do |n,i| %>
+        <tr>
+          <td style="text-align: center"><%= i+1 %></td>
+          <td style="text-align: center"><%= n.join(",") %></td>
+        </tr>
+      <% end %>
+    </table>
+    <h3>Количество последовательностей: <%= @result_array.size %></h3>
+    <h3>Самая длинная последовательность: <%= @result_array.max_by(&:length).join(' ') %></h3>
+  <% else %>
+    <h1>В последовательности нет квадратов</h1>
+  <% end %>
+  
+<% else %>
+ <h2>Ошибки ввода:<h2>
+  <ul>
+    <% @result.errors.each do |error| %>
+	  <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% else %>
+  <h1>Войдите, чтобы воспользоваться формой</h1>
+<% end %>

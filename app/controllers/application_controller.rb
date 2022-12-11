@@ -10,6 +10,20 @@ class ApplicationController < ActionController::Base
     current_user.present?
   end
 
+  def no_authentication
+    return unless user_signed_in?
+
+    flash[:warning] = 'Вход уже выполнен'
+    redirect_to root_path
+  end
+
+  def authentication
+    return if user_signed_in?
+
+    flash[:warning] = 'Вы не авторизованы'
+    redirect_to root_path
+  end
+
   def sign_in(user)
     session[:user_id] = user.id
   end

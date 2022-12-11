@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  before_action :no_authentication, only: %i[new create]
+  before_action :authentication, only: %i[edit update]
+  before_action :set_user, only: %i[edit update]
+  
   def new
     @user = User.new
   end
@@ -13,10 +17,27 @@ class UsersController < ApplicationController
       redirect_to new_user_path, notice: 'Ошибка во вводе данных или такой пользователь уже существует'
     end
   end
+  
+  def edit; end
+
+  def update
+    if @user.update(user_params)
+      flash[:success] = 'Данные обновлены'
+      redirect_to root_path
+    else
+      flash[:warning] = 'Значения полей не могут быть пустыми'
+      redirect_to edit_user_path
+    end
+  end
 
   private
 
-  def user_params
-    params.require(:user).permit(:email, :name, :password, :password_confirmation)
+  def set_user
+    @user = User.find params[:id]
   end
+
+  def user_params
+    params.require(:user).permit(:email, :name, :password, :password_confirmation, :old_password)
+  end
+
 end
