@@ -11,9 +11,16 @@
 
   <header>
   <nav class="navbar navbar-light bg-light">
-    <span class="navbar-brand mb-0 h1">Radicalovich</span>
+    <span class="navbar-brand mb-0 h1"><%= link_to 'Radicalovich', root_path, class: 'nav-link px-2'%></li></span>
     <ul class = "nav col-12 col-lg-auto mb-2 mb-md-0">
-      <li><strong><%= link_to 'Sign Up', new_user_path, class: 'nav-link px-2' %></strong></li>
+      <% if user_signed_in? %>
+        <li class = "dropdown">
+          <%= current_user.name %>
+        </li>
+      <% else %>
+        <li><%= link_to 'Sign Up', new_user_path, class: 'nav-link px-2' %></li>
+        <li><%= link_to 'Log In', new_session_path, class: 'nav-link px-2' %></li>
+      <% end %>
     </ul>
   </nav>
   </header>
