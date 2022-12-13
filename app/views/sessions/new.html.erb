@@ -7,7 +7,7 @@
     </div>
 
     <div class = "col-sm-10">
-      <%= form.email_field :email, class: 'form-control form-control-lg' %>
+      <%= form.email_field :email, class: 'form-control form-control-lg', id: 'email_field' %>
     </div>
   </div>
 
@@ -17,9 +17,9 @@
     </div>
 
     <div class = "col-sm-10">
-      <%= form.password_field :password, class: 'form-control form-control-lg' %>
+      <%= form.password_field :password, class: 'form-control form-control-lg', id:'password_field' %>
     </div>
   </div>
 
-  <p><%= form.submit("Авторизоваться", id: 'btn', class: 'btn btn-primary') %></p>
+  <p><%= form.submit("Авторизоваться", id: 'btn_submit', class: 'btn btn-primary') %></p>
 <% end %>

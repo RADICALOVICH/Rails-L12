@@ -17,11 +17,11 @@
     <ul class = "nav col-12 col-lg-auto mb-2 mb-md-0">
       <% if user_signed_in? %>
         <span class="navbar-brand mb-0 h1"><%= current_user.name %></span>
-        <li><%= link_to 'Edit profile', edit_user_path(current_user), class: 'nav-link px-2' %></li>
-        <li><%= link_to 'Log Out', session_path, data: {turbo_method: :delete}, class: 'nav-link px-2' %></li>
+        <li><%= link_to 'Edit profile', edit_user_path(current_user), class: 'nav-link px-2',id: 'edit_btn' %></li>
+        <li><%= link_to 'Log Out', session_path, data: {turbo_method: :delete}, class: 'nav-link px-2', id: 'log_out_btn' %></li>
       <% else %>
-        <li><%= link_to 'Sign Up', new_user_path, class: 'nav-link px-2' %></li>
-        <li><%= link_to 'Log In', new_session_path, class: 'nav-link px-2' %></li>
+        <li><%= link_to 'Sign Up', new_user_path, class: 'nav-link px-2', id: 'sing_up_button' %></li>
+        <li><%= link_to 'Log In', new_session_path, class: 'nav-link px-2', id: 'log_in_btn' %></li>
       <% end %>
     </ul>
   </nav>

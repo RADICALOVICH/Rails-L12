@@ -1,15 +1,13 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the SequencesHelper. For example:
-#
-# describe SequencesHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe SequencesHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#squares' do
+    context 'returns correct array' do
+      let!(:array) { [1, 2, 3] }
+      let!(:result_array) { [[1]] }
+      it 'when it is 1,2,3' do
+        expect(helper.squares(array)).to eq(result_array)
+      end
+    end
+  end
 end
